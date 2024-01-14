@@ -11,7 +11,7 @@ if __name__ == '__main__':
             print("MongoDB version: %s"%conn.version)
             print("Databases: %s"%conn.databases)
             print("Storage Size: %s MB"%(conn.storageSize))
-            database = plot_dashboard(conn.databases, conn.dbs, conn.collections)
+            database = plot_dashboard(conn.databases, conn.dbs, conn.collections, conn.version, conn.storageSize)
             if(database is not '----'):
                 plot_collections(database, conn.collections)
         

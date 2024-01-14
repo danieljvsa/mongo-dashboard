@@ -1,3 +1,4 @@
-streamlint=
+streamlit=
 pandas=
 pymongo=
+plotly.express=

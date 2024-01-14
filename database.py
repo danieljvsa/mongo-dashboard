@@ -51,10 +51,10 @@ class MongoDBConnection:
                     self.collections[db][collection]['indexesNumber'] = len(self.collections[db][collection]['indexes'])
                     self.collections[db][collection]['documents'] = db_command[collection].count_documents({})
                     self.collections[db][collection]['storageSize'] = db_command.command('collstats', collection)['storageSize']
-                    self.dbs[db]['storageSize'] += self.collections[db][collection]['storageSize'] 
-                    self.collections[db][collection]['storageSize'] = round(self.collections[db][collection]['storageSize'] / 1048576, 3)
+                    self.collections[db][collection]['storageSize'] = round((self.collections[db][collection]['storageSize']) / 1048576, 3) 
+                    self.dbs[db]['storageSize'] += round((self.collections[db][collection]['storageSize'] / 1048576), 3) 
             
-            self.dbs[db]['storageSize'] = round(self.dbs[db]['storageSize'] / 1048576, 3)  
+                self.dbs[db]['storageSize'] = round((self.dbs[db]['storageSize'] / 1048576), 3) 
             self.storageSize = round(self.storageSize / 1048576, 3)
         except Exception as error:
             print("database/MongoClientDB/get_databases: %s"%error)
